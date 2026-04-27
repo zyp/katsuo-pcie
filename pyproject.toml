@@ -1,0 +1,35 @@
+[project]
+name = "katsuo-pcie"
+description = "PCIe stack implemented in Amaranth"
+readme = "README.md"
+authors = [
+    {name = "Vegard Storheil Eriksen", email = "zyp@jvnv.net"},
+]
+license = {text = "MIT"}
+dependencies = [
+    "katsuo-stream",
+    "amaranth >= 0.5",
+    #"amaranth-soc @ git+https://github.com/amaranth-lang/amaranth-soc.git@5c43cf58f15d9cd9c69ff83c97997708d386b2dc"
+]
+requires-python = ">=3.10"
+dynamic = ["version"]
+
+[project.scripts]
+    
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+[tool.pdm.build]
+includes = ["katsuo/"]
+
+[tool.pdm.version]
+source = "scm"
+
+[tool.pdm.scripts]
+test.cmd = "pytest tests/"
+
+[dependency-groups]
+test = [
+    "pytest>=8.3.5",
+]
